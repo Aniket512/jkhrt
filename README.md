@@ -87,19 +87,19 @@ pytest -q
 
 ## Deploy
 
-### API (Render)
+Already deployed:
 
-1. New Web Service from this repo.
-2. Root directory: `backend`
-3. Build: `pip install -r requirements.txt`
-4. Start: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-5. Env: `FRONTEND_ORIGIN=https://<your-vercel-app>.vercel.app`
+| Service | Host | URL |
+|---------|------|-----|
+| Frontend | Vercel (root `frontend`) | https://jkhrt.vercel.app |
+| API | Render (root `backend`) | https://jkhrt.onrender.com |
 
-### Frontend (Vercel)
+Env in use:
 
-1. Import this repo; root directory `frontend`.
-2. Env: `VITE_API_BASE_URL=https://<your-api>.onrender.com` (no trailing slash).
-3. Deploy, then set Render `FRONTEND_ORIGIN` to the Vercel URL.
+- Vercel: `VITE_API_BASE_URL=https://jkhrt.onrender.com`
+- Render: `FRONTEND_ORIGIN=https://jkhrt.vercel.app`
+
+Render start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
 
 ## Example
 
