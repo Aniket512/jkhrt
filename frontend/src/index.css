@@ -1,0 +1,272 @@
+:root {
+  --bg-deep: #071420;
+  --bg: #0b1f33;
+  --bg-panel: rgba(14, 42, 64, 0.72);
+  --bg-panel-solid: #0e2a40;
+  --line: rgba(180, 210, 220, 0.14);
+  --text: #e8f1f4;
+  --muted: #9bb0bc;
+  --accent: #2ec4b6;
+  --accent-dim: #1a8f85;
+  --warn: #e8a54b;
+  --danger: #e07676;
+  --actual: #7eb8ff;
+  --forecast: #2ec4b6;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  --radius: 14px;
+  --font-display: "Sora", system-ui, sans-serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-body);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(46, 196, 182, 0.18), transparent 55%),
+    radial-gradient(900px 500px at 90% 0%, rgba(126, 184, 255, 0.12), transparent 50%),
+    linear-gradient(165deg, var(--bg-deep), var(--bg) 45%, #10263a);
+  background-attachment: fixed;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.75rem 0 3rem;
+}
+
+.hero {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  animation: rise 0.55s ease-out both;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.brand span {
+  color: var(--accent);
+}
+
+.tagline {
+  margin: 0;
+  max-width: 46rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  padding: 1.1rem 1.2rem;
+  animation: rise 0.65s ease-out both;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.85rem;
+  align-items: end;
+}
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.field label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.field input,
+.field select {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: rgba(4, 16, 28, 0.55);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: 2px solid rgba(46, 196, 182, 0.45);
+  outline-offset: 1px;
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 0.62rem 1rem;
+  font-weight: 600;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, var(--accent), var(--accent-dim));
+  color: #042019;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin: 1.1rem 0;
+}
+
+.metric {
+  background: rgba(4, 16, 28, 0.45);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+  animation: rise 0.7s ease-out both;
+}
+
+.metric .label {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.metric .value {
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.metric .hint {
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.chart-wrap {
+  margin-top: 0.5rem;
+  min-height: 340px;
+}
+
+.chart-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin: 0 0 0.75rem;
+}
+
+.status {
+  margin: 1rem 0;
+  color: var(--muted);
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+.notes {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.notes ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.legend {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.legend i {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+  margin-right: 0.35rem;
+}
+
+.legend .actual {
+  background: var(--actual);
+}
+
+.legend .forecast {
+  background: var(--forecast);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .app {
+    width: calc(100% - 1.25rem);
+    padding-top: 1.2rem;
+  }
+
+  .metric .value {
+    font-size: 1.15rem;
+  }
+}

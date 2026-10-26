@@ -1,0 +1,20 @@
+services:
+  api:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      FRONTEND_ORIGIN: http://localhost:5173,http://localhost:8080
+      ELEXON_TIMEOUT_SECONDS: 90
+      DEFAULT_GATE_HOUR_UTC: 11
+
+  web:
+    build:
+      context: ./frontend
+      args:
+        # Browser calls the API on the host-mapped port.
+        VITE_API_BASE_URL: http://localhost:8000
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
